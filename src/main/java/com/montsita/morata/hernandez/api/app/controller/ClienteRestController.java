@@ -37,7 +37,19 @@ public class ClienteRestController {
 	//@RequestBody: anotación pr recibir un modelo cliente, una respuesta
 	public Cliente create(@RequestBody Cliente cliente) {
 		return clienteService.guardar(cliente);
-		
+			
+	}
+	@GetMapping("/clientes/namelastname/{nombre}/{apellido}")
+	public List<Cliente> findByNameAndSurname(@PathVariable String nombre, @PathVariable String apellido) {
+		return clienteService.buscarPorNombreApellidos2(nombre, apellido);
 		
 	}
+	
+	
+	@GetMapping("/clientes/emailtelefono/{email}/{telefono}")
+	public List<Cliente> findByPhoneAndMail(@PathVariable String email, @PathVariable int telefono) {
+		return clienteService.buscarPorEmailTelefono(email,telefono);
+	
+	}
 }
+	

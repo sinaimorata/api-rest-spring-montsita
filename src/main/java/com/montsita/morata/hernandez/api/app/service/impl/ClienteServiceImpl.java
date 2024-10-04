@@ -33,9 +33,21 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Cliente buscarPorId(Long id) {
+	public List<Cliente> buscarPorNombreApellidos2(String nombre, String apellido) {
 		
-		return (Cliente) clienteRepository.findById(id).orElse(null);
+		return clienteRepository.findByNombreAndApellido(nombre, apellido);
+	}
+	@Override
+	@Transactional(readOnly = true)
+	public List<Cliente> buscarPorEmailTelefono(String email,int telefono) { 
+		return clienteRepository.findByEmailAndTelefono2(email,telefono);
 	}
 
+	@Override
+	public Cliente buscarPorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
